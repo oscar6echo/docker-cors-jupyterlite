@@ -4,23 +4,26 @@
 
 FastApi server to **replace** any server header `Access-Control-Allow-Origin` with header `Access-Control-Allow-Origin: $http_origin` for requests to `[protocol]://[hostname]/<targetURL>` where `[protocol]` and `[hostname]` are those of the FastApi CORS proxy server.
 
-Additionally if params `_proxy_usename` and `_proxy_password` are in url, and env variables `$PROXY_HOST` and `$PROXY_PORT` exist then they are used as params to use the following proxy:
-`http://{_proxy_usename}:{_proxy_password}@{PROXY_HOST}:{PROXY_PORT}`.
-_NOTE_: `_proxy_password` needs be url encoded.
+Additionally if params `_proxy_usename` and `_proxy_password` are in url, and env variables `$PROXY_HOST` and `$PROXY_PORT` exist in server then they are used as params to use the following proxy:
+
+- `http://{_proxy_usename}:{_proxy_password}@{PROXY_HOST}:{PROXY_PORT}`.  
+  _NOTE_: `_proxy_password` needs be url encoded.
 
 ## Example
 
-A client sent request to `https://localhost/cors/<targetURL>`, the FastApi CORS proxy server (CPS) `proxy_pass` and `proxy_redirect` the request to `<targetURL>`, and when the CPS receives the response from `<targetURL>`, the CPS sets header `Access-Control-Allow-Origin: $http_origin` on the response, after suppressing that header coming from `<targetURL>`, and pass it back to client.
+A client sent request to `https://localhost:8086/cors/<targetURL>`, the FastApi CORS proxy server (CPS) makes the same the request to `<targetURL>`, and when the CPS receives the response from `<targetURL>`, the CPS sets header `Access-Control-Allow-Origin: $http_origin` on the response, after suppressing that header coming from `<targetURL>`, and pass it back to client.
 
 If the client is a browser this allows to avoid [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors).
 
 ## Certificates
 
-You need serve the CPS over `https` if a web page served over `https` is to use it.  
-Then you need create certificates.  
+You need serve the CPS over `https` if the client is a web page served over `https`.  
+Then you need create certificates first.  
 For a dev environment, [mkcert](https://github.com/FiloSottile/mkcert) is very convenient.
 
 ## Test
+
+Run the following in sequence:
 
 - Certificates:
 
@@ -48,4 +51,4 @@ For a dev environment, [mkcert](https://github.com/FiloSottile/mkcert) is very c
 
   ```
 
-See notebook [test-cors.ipynb](./test/test-cors.ipynb).
+See demo notebook [test-cors.ipynb](./test/test-cors.ipynb).
