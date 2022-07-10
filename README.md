@@ -6,7 +6,7 @@ FastApi server to **replace** any server header `Access-Control-Allow-Origin` wi
 
 Additionally if params `_proxy_usename` and `_proxy_password` are in url, and env variables `$PROXY_HOST` and `$PROXY_PORT` exist in server then they are used as params to use the following proxy:
 
-- `http://{_proxy_usename}:{_proxy_password}@{PROXY_HOST}:{PROXY_PORT}`.  
+- `http://{_proxy_usename}:{_proxy_password}@{PROXY_HOST}:{PROXY_PORT}`  
   _NOTE_: `_proxy_password` needs be url encoded.
 
 ## Example
