@@ -5,7 +5,8 @@
 FastApi server to **replace** any server header `Access-Control-Allow-Origin` with header `Access-Control-Allow-Origin: $http_origin` for requests to `[protocol]://[hostname]/<targetURL>` where `[protocol]` and `[hostname]` are those of the FastApi CORS proxy server.
 
 Additionally if params `_proxy_usename` and `_proxy_password` are in url, and env variables `$PROXY_HOST` and `$PROXY_PORT` exist then they are used as params to use the following proxy:
-`http://{username}:{url_encoded_password}@{PROXY_HOST}:{PROXY_PORT}`.
+`http://{_proxy_usename}:{_proxy_password}@{PROXY_HOST}:{PROXY_PORT}`.
+_NOTE_: `_proxy_password` needs be url encoded.
 
 ## Example
 
