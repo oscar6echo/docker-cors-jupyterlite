@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /app &&
+    /home/cors/.local/bin/gunicorn src.main:app \
+        -c /app/conf/gunicorn.py

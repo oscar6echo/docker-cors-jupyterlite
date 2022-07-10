@@ -1,0 +1,17 @@
+
+.vscode/
+__pycache__/
+.ipynb_checkpoints/
+
+.env
+*.py[cod]
+build/
+dist/
+.eggs/
+lib/
+wheels/
+*.egg-info/
+MANIFEST
+
+certs
+wip

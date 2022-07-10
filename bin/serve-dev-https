@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd /app &&
+    /home/cors/.local/bin/uvicorn src.main:app \
+        --host 0.0.0.0 \
+        --port 8443 \
+        --ssl-certfile /app/certs/tls-localhost.crt \
+        --ssl-keyfile /app/certs/tls-localhost.key \
+        --reload
